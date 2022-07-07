@@ -11,6 +11,7 @@ on:
       - closed
       - opened
       - edited
+      - synchronize
 
 jobs:
   test-job:
