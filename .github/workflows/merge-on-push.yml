@@ -1,9 +1,9 @@
 name: Jumpcloud User to User Group Mappings
 # Run only if the following files are changed
 on:
-  push:
-    paths:
-      - README.md
+  # push:
+  #   paths:
+  #     - README.md
   pull_request:
     paths:
       - README.md
