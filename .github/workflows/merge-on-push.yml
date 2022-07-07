@@ -4,7 +4,7 @@ on:
   # push:
   #   paths:
   #     - README.md
-  push:
+  pull_request:
     paths:
       - README.md
     types:
@@ -37,14 +37,14 @@ jobs:
 
     steps:
     - name: Checkout code
-      #if: github.event.pull_request.merged == true && github.event.pull_request.base.ref == 'main'
+      # if: github.event.pull_request.merged == true && github.event.pull_request.base.ref == 'main'
       uses: actions/checkout@v3
 
     # Perform the actual user to user group mapping when the PR is merged to main
     - name: Actual Run
       env:
         GITHUB_CONTEXT: ${{ toJson(github) }}
-      #if: github.event.pull_request.merged == true && github.event.pull_request.base.ref == 'main'
+      # if: github.event.pull_request.merged == true && github.event.pull_request.base.ref == 'main'
       shell: bash
       run: |
         echo GITHUB_CONTEXT
