@@ -1,4 +1,4 @@
-name: Jumpcloud User to User Group Mappings
+name: PR Merge run
 # Run only if the following files are changed
 on:
   # push:
