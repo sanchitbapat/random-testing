@@ -19,6 +19,8 @@ jobs:
       if: github.event.pull_request.merged == false
       shell: bash
       run: |
+        echo github.event.pull_request.merged
+        echo github.event.pull_request.base.ref
         echo "This should run on merge to main"
 
   actual-job:
@@ -26,12 +28,14 @@ jobs:
 
     steps:
     - name: Checkout code
-      if: github.event.pull_request.merged == true && github.event.pull_request.base.ref == 'main'
+      #if: github.event.pull_request.merged == true && github.event.pull_request.base.ref == 'main'
       uses: actions/checkout@v3
 
     # Perform the actual user to user group mapping when the PR is merged to main
     - name: Actual Run
-      if: github.event.pull_request.merged == true && github.event.pull_request.base.ref == 'main'
+      #if: github.event.pull_request.merged == true && github.event.pull_request.base.ref == 'main'
       shell: bash
       run: |
+        echo github.event.pull_request.merged
+        echo github.event.pull_request.base.ref
         echo "This should run on merge to main"
