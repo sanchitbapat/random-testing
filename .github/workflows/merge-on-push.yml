@@ -17,10 +17,11 @@ jobs:
     # Test the user to user group mapping on the jumpcloud test account when a PR is opened
     - name: Test Run
       if: github.event.pull_request.merged == false
+      env:
+        GITHUB_CONTEXT: ${{ toJson(github) }}
       shell: bash
       run: |
-        echo github.event.pull_request.merged
-        echo github.event.pull_request.base.ref
+        echo GITHUB_CONTEXT
         echo "This should run on merge to main"
 
   actual-job:
@@ -33,9 +34,10 @@ jobs:
 
     # Perform the actual user to user group mapping when the PR is merged to main
     - name: Actual Run
+      env:
+        GITHUB_CONTEXT: ${{ toJson(github) }}
       #if: github.event.pull_request.merged == true && github.event.pull_request.base.ref == 'main'
       shell: bash
       run: |
-        echo github.event.pull_request.merged
-        echo github.event.pull_request.base.ref
+        echo GITHUB_CONTEXT
         echo "This should run on merge to main"
