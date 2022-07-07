@@ -1,0 +1,37 @@
+name: Jumpcloud User to User Group Mappings
+# Run only if the following files are changed
+on:
+  push:
+    paths:
+      - README.md
+
+jobs:
+  test-job:
+    runs-on: ubuntu-20.04
+
+    steps:
+    - name: Checkout code
+      if: github.event.pull_request.merged == false
+      uses: actions/checkout@v3
+
+    # Test the user to user group mapping on the jumpcloud test account when a PR is opened
+    - name: Test Run
+      if: github.event.pull_request.merged == false
+      shell: bash
+      run: |
+        echo "This should run on merge to main"
+
+  actual-job:
+    runs-on: ubuntu-20.04
+
+    steps:
+    - name: Checkout code
+      if: github.event.pull_request.merged == true && github.event.pull_request.base.ref == 'main'
+      uses: actions/checkout@v3
+
+    # Perform the actual user to user group mapping when the PR is merged to main
+    - name: Actual Run
+      if: github.event.pull_request.merged == true && github.event.pull_request.base.ref == 'main'
+      shell: bash
+      run: |
+        echo "This should run on merge to main"
