@@ -1,17 +1,26 @@
+name: Check if merging to main or staging only happens from staging or develop respectively
 on:
   pull_request:
     branches:
       - main
+      - staging
+
 jobs:
-  merge_check:
+  merge_checks_staging:
     runs-on: ubuntu-latest
+    name: Check if the PR to staging is from the develop branch
     steps:
-      - name: Check if the pull request is mergeable to master
-        run: |
-          if [[ "$GITHUB_HEAD_REF" == 'develop' ]]
-          then
-            exit 0
-          else
-            echo "PR to main should orignate from develop and not $BLAH"
-            exit 1
-          fi
+      - uses: XanaduAI/cloud-actions/restrict-merge-to-destination-branch@v1.1
+        with:
+          source-branch: develop
+          destination-branch: staging
+
+  merge_checks_prod:
+    runs-on: ubuntu-latest
+    name: Check if the PR to main is from the staging branch
+    steps:
+      - uses: XanaduAI/cloud-actions/restrict-merge-to-destination-branch@v1.1
+        with:
+          source-branch: staging
+          destination-branch: main
+
