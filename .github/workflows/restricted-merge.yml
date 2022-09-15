@@ -4,9 +4,14 @@ on:
     branches:
       - main
       - staging
+    types:
+      - opened
+      - edited
+      - synchronize
 
 jobs:
   merge_checks_staging:
+    if: "$GITHUB_BASE_REF == 'staging'"
     runs-on: ubuntu-latest
     name: Check if the PR to staging is from the develop branch
     steps:
@@ -16,6 +21,7 @@ jobs:
           destination-branch: staging
 
   merge_checks_prod:
+    if: "$GITHUB_BASE_REF == 'main'"
     runs-on: ubuntu-latest
     name: Check if the PR to main is from the staging branch
     steps:
