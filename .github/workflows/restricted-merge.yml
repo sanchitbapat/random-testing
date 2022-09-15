@@ -21,7 +21,7 @@ jobs:
           destination-branch: staging
 
   merge_checks_prod:
-    if: github.base_ref == main'
+    if: github.base_ref == 'main'
     runs-on: ubuntu-latest
     name: Check if the PR to main is from the staging branch
     steps:
