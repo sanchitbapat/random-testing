@@ -18,3 +18,9 @@ jobs:
       uses: XanaduAI/cloud-actions/push-to-s3-and-invalidate-cloudfront@sc-28936-create-a-generic-github-action-to-push-frontend
       with:
         s3-bucket: "blah"
+        build-directory: "docs"
+        aws-region: "east"
+        aws-access-key-id: "1"
+        aws-secret-access-key: "2"
+        aws-cloudfront-distribution-id: "a"
+
