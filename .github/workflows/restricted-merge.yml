@@ -7,7 +7,6 @@ on:
     types:
       - opened
       - edited
-      - synchronize
 
 jobs:
   merge_checks_staging:
