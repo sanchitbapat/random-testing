@@ -6,3 +6,4 @@ test
 gg
 ca
 docs dir
+docs
