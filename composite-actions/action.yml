@@ -22,7 +22,7 @@ runs:
       shell: bash
       run: |
         push_branch_names=`echo "[\"${{ inputs.push-branches }}\"]" |sed 's/,/\", \"/g'`
-        echo "push_branch_names=$push_branch_names" >> $GITHUB_OUTPUT
+        echo "push_branch_names='$push_branch_names'" >> $GITHUB_OUTPUT
       
     - name: print op
       shell: bash
@@ -30,6 +30,6 @@ runs:
 
     - name: print inputs
       # if: github.event_name == 'push' && contains(fromJson('[${{ inputs.push-branches }}]'), 'main')
-      if: contains(fromJson(${{ steps.op.outputs.push_branch_names }}), "main")
+      if: contains(fromJson(${{ steps.op.outputs.push_branch_names }}), 'main')
       shell: bash
       run: echo "yes"
