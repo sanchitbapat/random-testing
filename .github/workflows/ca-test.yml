@@ -25,7 +25,7 @@ jobs:
     - name: print inputs
       uses: ./composite-actions
       with:
-        push-branches: "ca-test, blah"
+        push-branches: "ca-test,blah"
       
 
     # - name: Run composite action
