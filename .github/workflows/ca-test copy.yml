@@ -1,0 +1,38 @@
+name: Cloud-actions-push-to-s3-test
+on:
+  pull_request:
+    paths:
+      - somefile.txt
+    types:
+      - opened
+      - edited
+      - synchronize
+      - closed
+  push:
+    branches:
+      - "ca-test"
+
+jobs:
+  test-job:
+    runs-on: ubuntu-20.04
+
+
+    steps:
+
+    - name: Checkout
+      uses: actions/checkout@v3
+    
+    - name: print inputs
+      uses: ./composite-actions
+      
+
+    # - name: Run composite action
+    #   uses: XanaduAI/cloud-actions/push-to-s3-and-invalidate-cloudfront@sc-28936-create-a-generic-github-action-to-push-frontend
+    #   with:
+    #     s3-bucket: "blah"
+    #     build-directory: "docs"
+    #     aws-region: "east"
+    #     aws-access-key-id: "1"
+    #     aws-secret-access-key: "2"
+    #     aws-cloudfront-distribution-id: "a"
+

@@ -1,0 +1,17 @@
+name: Test comosite actions
+description: some desc
+
+inputs:
+  push-branches:
+    description: some desc
+    required: false
+    default: |
+        main
+        master
+
+runs:
+  using: composite
+  steps:
+    - name: print inputs
+      shell: bash
+      run: echo ${{ inputs.push-branches }}
