@@ -11,5 +11,6 @@ runs:
   using: composite
   steps:
     - name: print inputs
+      if: contains(fromJson('[${{ inputs.push-branches }}]'), "main")
       shell: bash
-      run: echo fromJson('[${{ inputs.push-branches }}]')
+      run: echo "yes"
