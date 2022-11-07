@@ -11,6 +11,7 @@ runs:
   using: composite
   steps:
     - name: print inputs
-      if: contains(fromJson('["ca-test","blah"]'), "main")
+      # if: github.event_name == 'push' && contains(fromJson('[${{ inputs.push-branches }}]'), 'main')
+      if: contains(fromJson('["ca-test","blah"]'), 'main')
       shell: bash
       run: echo "yes"
