@@ -8,6 +8,9 @@ on:
       - edited
       - synchronize
       - closed
+  push:
+    branches:
+      - "ca-test"
 
 jobs:
   test-job:
@@ -18,21 +21,19 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v3
     
-    - name: abc
+    - name: Push test
+      env:
+        GITHUB_CONTEXT: ${{ github }}
       shell: bash
-      run: |
-        pwd
-        ls -al
-        ls -al docs/
+      run: echo $GITHUB_CONTEXT
 
-
-    - name: Run composite action
-      uses: XanaduAI/cloud-actions/push-to-s3-and-invalidate-cloudfront@sc-28936-create-a-generic-github-action-to-push-frontend
-      with:
-        s3-bucket: "blah"
-        build-directory: "docs"
-        aws-region: "east"
-        aws-access-key-id: "1"
-        aws-secret-access-key: "2"
-        aws-cloudfront-distribution-id: "a"
+    # - name: Run composite action
+    #   uses: XanaduAI/cloud-actions/push-to-s3-and-invalidate-cloudfront@sc-28936-create-a-generic-github-action-to-push-frontend
+    #   with:
+    #     s3-bucket: "blah"
+    #     build-directory: "docs"
+    #     aws-region: "east"
+    #     aws-access-key-id: "1"
+    #     aws-secret-access-key: "2"
+    #     aws-cloudfront-distribution-id: "a"
 
