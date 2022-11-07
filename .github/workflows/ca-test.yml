@@ -22,13 +22,9 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v3
     
-    - name: Push test
-      env:
-        push-branch-name: |
-          main
-          master
-      shell: bash
-      run: echo $push-branch-name
+    - name: print inputs
+      uses: ./composite-actions
+      
 
     # - name: Run composite action
     #   uses: XanaduAI/cloud-actions/push-to-s3-and-invalidate-cloudfront@sc-28936-create-a-generic-github-action-to-push-frontend

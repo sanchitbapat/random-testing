@@ -5,13 +5,11 @@ inputs:
   push-branches:
     description: some desc
     required: false
-    default: |
-        main
-        master
+    default: "main,master"
 
 runs:
   using: composite
   steps:
     - name: print inputs
       shell: bash
-      run: echo ${{ inputs.push-branches }}
+      run: echo fromJson('[${{ inputs.push-branches }}]')
