@@ -7,11 +7,24 @@ inputs:
     required: false
     default: "main,master"
 
+# outputs:
+#   push_branch_names:
+#     description: should output an array
+#     value: ${{ steps.op.push_branch_names }}
+
+
 runs:
   using: composite
   steps:
+
+    # - name: op
+    #   id: op
+    #   shell: bash
+    #   run: |
+    #     echo
+
     - name: print inputs
       # if: github.event_name == 'push' && contains(fromJson('[${{ inputs.push-branches }}]'), 'main')
-      if: contains(fromJson('["ca-test","blah"]'), 'main')
+      if: contains(fromJson(${{ inputs.push-branches }}), 'main')
       shell: bash
       run: echo "yes"
