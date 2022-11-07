@@ -21,7 +21,7 @@ runs:
       id: op
       shell: bash
       run: |
-        echo "push_branch_names=abcd" >> $GITHUB_OUTPUT
+        echo "push_branch_names=`echo "[\"${{ inputs.push-branches }}\"]" |sed 's/,/\", \"/g'`" >> $GITHUB_OUTPUT
       
     - name: print op
       shell: bash
