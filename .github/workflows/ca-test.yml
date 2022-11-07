@@ -16,18 +16,19 @@ jobs:
   test-job:
     runs-on: ubuntu-20.04
 
+
     steps:
 
     - name: Checkout
       uses: actions/checkout@v3
     
     - name: Push test
-      with:
-        push-branches: |
+      env:
+        push-branch-name: |
           main
           master
       shell: bash
-      run: echo ${{ inputs.push-branches }}
+      run: echo $push-branch-name
 
     # - name: Run composite action
     #   uses: XanaduAI/cloud-actions/push-to-s3-and-invalidate-cloudfront@sc-28936-create-a-generic-github-action-to-push-frontend
