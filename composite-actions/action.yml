@@ -32,4 +32,6 @@ runs:
       # if: github.event_name == 'push' && contains(fromJson('[${{ inputs.push-branches }}]'), 'main')
       if: contains(fromJson('[${{ steps.op.outputs.push_branch_names }}]'), 'min')
       shell: bash
-      run: echo "yes"
+      run: |
+        echo "yes"
+        fromJson('[${{ steps.op.outputs.push_branch_names }}]')
