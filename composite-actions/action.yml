@@ -13,7 +13,7 @@ inputs:
   invalidate-cloudfront-cache:
     description: A flag to indicate if the cloudfront cache should be invalidated
     required: false
-    default: "false"
+    default: false
 
 outputs:
   push_branch_names:
@@ -41,7 +41,7 @@ runs:
 
     - name: two
       shell: bash
-      if: inputs.invalidate-cloudfront-cache.lowercase
+      if: inputs.invalidate-cloudfront-cache
       run: |
         echo two
 
