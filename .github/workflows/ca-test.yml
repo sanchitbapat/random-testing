@@ -27,7 +27,7 @@ jobs:
       with:
         push-branches: "ca-test,blah"
         invalidate-cloudfront-cache: true
-        s3-action: 'upload'
+        s3-action: "upload"
       
 
     # - name: Run composite action

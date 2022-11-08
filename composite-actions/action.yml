@@ -32,9 +32,16 @@ runs:
         echo ${{ inputs.s3-action.lowercase }} == 'delete' || (${{ inputs.s3-action }} == '' && ${{ github.event_name }} == 'pull_request' && ${{ github.event.action }} == 'closed')
         echo ${{ inputs.invalidate-cloudfront-cache.lowercase }} == 'true'
 
+    - name: one one
+      shell: bash
+      if: inputs.s3-action.lowercase == 'upload'
+      #  || (inputs.s3-action == '' && github.event_name == 'pull_request' && (contains(fromJson('["opened", "synchronize"]'), github.event.action) == 'true'))
+      run: |
+        echo oneone
+
     - name: one
       shell: bash
-      if: inputs.s3-action.lowercase == 'upload' || (inputs.s3-action == '' && github.event_name == 'pull_request' && contains(fromJson('["opened", "synchronize"]'), github.event.action))
+      if: inputs.s3-action == '' && github.event_name == 'pull_request' && contains(fromJson('["opened", "synchronize"]'), github.event.action)
       #  || (inputs.s3-action == '' && github.event_name == 'pull_request' && (contains(fromJson('["opened", "synchronize"]'), github.event.action) == 'true'))
       run: |
         echo one
