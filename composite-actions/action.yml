@@ -45,6 +45,12 @@ runs:
       run: |
         echo two
 
+    - name: three
+      shell: bash
+      if: contains(fromJson('["opened", "synchronize"]'), github.event.action)
+      run: |
+        echo two
+
     # - name: op
     #   id: op
     #   shell: bash
