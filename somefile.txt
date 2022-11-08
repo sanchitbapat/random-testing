@@ -6,4 +6,5 @@ test
 gg
 ca
 docs dir
-docs
+doc
+ggg
