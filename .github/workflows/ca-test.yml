@@ -26,8 +26,8 @@ jobs:
       uses: ./composite-actions
       with:
         push-branches: "ca-test,blah"
-        invalidate-cloudfront-cache: true
-        s3-action: "upl"
+        # invalidate-cloudfront-cache: true
+        s3-action: "delete"
       
 
     # - name: Run composite action
