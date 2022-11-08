@@ -34,4 +34,4 @@ runs:
       shell: bash
       run: |
         echo "yes"
-        echo ${{ fromJson('[${{ steps.op.outputs.push_branch_names }}]') }}
+        echo "${{ fromJson('[${{ steps.op.outputs.push_branch_names }}]') }}"
