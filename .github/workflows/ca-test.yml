@@ -27,7 +27,7 @@ jobs:
       with:
         push-branches: "ca-test,blah"
         invalidate-cloudfront-cache: true
-        s3-action: "uPloAd"
+        s3-action: "upl"
       
 
     # - name: Run composite action
