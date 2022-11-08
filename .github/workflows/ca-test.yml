@@ -26,7 +26,7 @@ jobs:
       uses: ./composite-actions
       with:
         push-branches: "ca-test,blah"
-        invalidate-cloudfront-cache: 'true'
+        invalidate-cloudfront-cache: "true"
       
 
     # - name: Run composite action

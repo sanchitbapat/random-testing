@@ -41,7 +41,7 @@ runs:
 
     - name: two
       shell: bash
-      if: inputs.invalidate-cloudfront-cache.lowercase == 'true'
+      if: inputs.invalidate-cloudfront-cache.lowercase
       run: |
         echo two
 
