@@ -6,6 +6,13 @@ inputs:
     description: some desc
     required: false
     default: "main,master"
+  s3-action:
+    description: yess
+    required: false
+  invalidate-cloudfront-cache:
+    description: A flag to indicate if the cloudfront cache should be invalidated
+    required: false
+    default: "false"
 
 outputs:
   push_branch_names:
@@ -17,23 +24,30 @@ runs:
   using: composite
   steps:
 
-    - name: op
-      id: op
+    - name: echo if statements
       shell: bash
       run: |
-        push_branch_names=`echo \"${{ inputs.push-branches }}\" |sed 's/,/\", \"/g'`
-        echo "push_branch_names='[$push_branch_names]'" >> $GITHUB_OUTPUT
-      
-    - name: print op
-      shell: bash
-      run: echo ${{ steps.op.outputs.push_branch_names }}
+        echo ${{ inputs.s3-action.lowercase }} == "upload" || (${{ inputs.s3-action }} == "" && ${{ github.event_name }} == 'pull_request' && (${{ contains(fromJson('["opened", "synchronize"]'), github.event.action) }} == 'true'))
+        echo ${{ inputs.s3-action.lowercase == "delete" }} || (${{ inputs.s3-action }} == "" && ${{ github.event_name }} == 'pull_request' && ${{ github.event.action }} == 'closed')
+        echo ${{ inputs.invalidate-cloudfront-cache.lowercase }} == 'true'
 
-    - name: print inputs
-      # if: github.event_name == 'push' && contains(fromJson('[${{ inputs.push-branches }}]'), 'main')
-      # if: contains(${{ steps.op.outputs.push_branch_names }}, 'min') == 'true'
-      if: contains(fromJson('["ca-test","blah"]'), 'min')
-      # if: false
-      shell: bash
-      run: |
-        echo "yes"
-        echo "${{ contains(fromJson('["ca-test","blah"]'), 'min') }}"
+    # - name: op
+    #   id: op
+    #   shell: bash
+    #   run: |
+    #     push_branch_names=`echo \"${{ inputs.push-branches }}\" |sed 's/,/\", \"/g'`
+    #     echo "push_branch_names='[$push_branch_names]'" >> $GITHUB_OUTPUT
+      
+    # - name: print op
+    #   shell: bash
+    #   run: echo ${{ steps.op.outputs.push_branch_names }}
+
+    # - name: print inputs
+    #   # if: github.event_name == 'push' && contains(fromJson('[${{ inputs.push-branches }}]'), 'main')
+    #   # if: contains(${{ steps.op.outputs.push_branch_names }}, 'min') == 'true'
+    #   if: contains(fromJson('["ca-test","blah"]'), 'min')
+    #   # if: false
+    #   shell: bash
+    #   run: |
+    #     echo "yes"
+    #     echo "${{ contains(fromJson('["ca-test","blah"]'), 'min') }}"
