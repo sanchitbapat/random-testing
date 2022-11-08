@@ -1,16 +1,16 @@
 name: Cloud-actions-push-to-s3-test
 on:
-  # pull_request:
-  #   paths:
-  #     - somefile.txt
-  #   types:
-  #     - opened
-  #     - edited
-  #     - synchronize
-  #     - closed
-  push:
-    branches:
-      - "ca-test"
+  pull_request:
+    paths:
+      - somefile.txt
+    types:
+      - opened
+      - edited
+      - synchronize
+      - closed
+  # push:
+  #   branches:
+  #     - "ca-test"
 
 jobs:
   test-job:
