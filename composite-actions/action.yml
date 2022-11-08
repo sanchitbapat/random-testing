@@ -30,8 +30,9 @@ runs:
 
     - name: print inputs
       # if: github.event_name == 'push' && contains(fromJson('[${{ inputs.push-branches }}]'), 'main')
-      if: contains(${{ steps.op.outputs.push_branch_names }}, 'min')
+      # if: contains(${{ steps.op.outputs.push_branch_names }}, 'min')
+      if: false
       shell: bash
       run: |
         echo "yes"
-        echo "${{ contains(steps.op.outputs.push_branch_names, 'min') }}"
+        echo "${{ contains(fromJson('["ca-test","blah"]'), 'min') }}"
