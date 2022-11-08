@@ -49,7 +49,7 @@ runs:
       shell: bash
       if: contains(fromJson('["opened", "synchronize"]'), github.event.action)
       run: |
-        echo two
+        echo three
 
     # - name: op
     #   id: op
