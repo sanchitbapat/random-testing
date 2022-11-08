@@ -34,7 +34,7 @@ runs:
 
     - name: one one
       shell: bash
-      if: inputs.s3-action == 'upload'
+      if: inputs.s3-action == 'upload' || (inputs.s3-action == '' && github.event_name == 'pull_request' && contains(fromJson('["opened", "synchronize"]'), github.event.action))
       #  || (inputs.s3-action == '' && github.event_name == 'pull_request' && (contains(fromJson('["opened", "synchronize"]'), github.event.action) == 'true'))
       run: |
         echo oneone
