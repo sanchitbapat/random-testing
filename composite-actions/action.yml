@@ -33,14 +33,14 @@ runs:
 
     - name: one
       shell: bash
-      if: inputs.s3-action.lowercase == 'upload'
+      if: inputs.s3-action.lowercase == "upload"
       #  || (inputs.s3-action == '' && github.event_name == 'pull_request' && (contains(fromJson('["opened", "synchronize"]'), github.event.action) == 'true'))
       run: |
         echo one
 
     - name: two
       shell: bash
-      if: inputs.s3-action == '' && github.event_name == 'pull_request' && (contains(fromJson('["opened", "synchronize"]'), github.event.action) == 'true')
+      if: inputs.s3-action == "" && github.event_name == 'pull_request' && (contains(fromJson('["opened", "synchronize"]'), github.event.action) == 'true')
       run: |
         echo two
 
