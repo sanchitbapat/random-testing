@@ -22,22 +22,25 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v3
     
-    - name: print inputs
-      uses: ./composite-actions
-      with:
-        push-branches: "ca-test,blah"
-        invalidate-cloudfront-cache: 'true'
-        s3-action: "delete"
+    # - name: print inputs
+    #   uses: ./composite-actions
+    #   with:
+    #     push-branches: "ca-test,blah"
+    #     invalidate-cloudfront-cache: 'true'
+    #     s3-action: "delete"
       
 
-    # - name: Run composite action
-    #   uses: XanaduAI/cloud-actions/push-to-s3-and-invalidate-cloudfront@sc-28936-create-a-generic-github-action-to-push-frontend
-    #   with:
-    #     build-directory: "docs"
-    #     pull-request-number: 123
-    #     aws-region: "east"
-    #     aws-access-key-id: "1"
-    #     aws-secret-access-key: "2"
-    #     aws-cloudfront-distribution-id: "a"
-    #     s3-bucket: "blah"
-    #     invalidate-cloudfront-cache: 'true'
+    - name: Run composite action
+      uses: XanaduAI/cloud-actions/push-to-s3-and-invalidate-cloudfront@sc-28936-create-a-generic-github-action-to-push-frontend
+      with:
+        build-directory: "docs"
+        pull-request-number: 123
+        aws-region: "east"
+        aws-access-key-id: "1"
+        aws-secret-access-key: "2"
+        aws-cloudfront-distribution-id: "a"
+        s3-bucket: myS3Bucket
+        s3-action: "upload"
+        s3-dir-to-upload-to: "blog"
+        s3-files-to-exclude: "somefile,otherfile,onemorefile.txt"
+        invalidate-cloudfront-cache: "true"
