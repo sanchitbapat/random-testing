@@ -23,7 +23,7 @@ jobs:
     #   uses: actions/checkout@v3
     
     - name: print inputs
-      if: github.event_name == 'pull_request' && contains('["opened", "synchronize"]', github.event.action)
+      if: github.event_name == 'pull_request' && contains('["opened", "synchronize"]', 'mmm')
       shell: bash
       run: echo one
       
