@@ -1,24 +1,24 @@
 name: Test comosite actions
 description: some desc
 
-inputs:
-  push-branches:
-    description: some desc
-    required: false
-    default: "main,master"
-  s3-action:
-    description: yess
-    required: false
-    default: ""
-  invalidate-cloudfront-cache:
-    description: A flag to indicate if the cloudfront cache should be invalidated
-    required: false
-    default: 'false'
+# inputs:
+#   push-branches:
+#     description: some desc
+#     required: false
+#     default: "main,master"
+#   s3-action:
+#     description: yess
+#     required: false
+#     default: ""
+#   invalidate-cloudfront-cache:
+#     description: A flag to indicate if the cloudfront cache should be invalidated
+#     required: false
+#     default: 'false'
 
-outputs:
-  push_branch_names:
-    description: should output an array
-    value: ${{ steps.op.push_branch_names }}
+# outputs:
+#   push_branch_names:
+#     description: should output an array
+#     value: ${{ steps.op.push_branch_names }}
 
 
 runs:
