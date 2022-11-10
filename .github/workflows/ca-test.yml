@@ -42,5 +42,5 @@ jobs:
         s3-bucket: myS3Bucket
         s3-action: "upload"
         s3-dir-to-upload-to: "blog"
-        s3-files-to-exclude: "somefile,otherfile,onemorefile.txt"
+        s3-files-to-exclude: "PR-[0-9]*"
         invalidate-cloudfront-cache: "true"
