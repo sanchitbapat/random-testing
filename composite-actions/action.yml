@@ -26,7 +26,7 @@ runs:
   steps:
     - name: Input validation
       if: inputs.s3-action == "pr-previews" and inputs.push-branches == ""
-      uses: actions/github-script@v6.3.3
+      uses: actions/github-script@v6
       with:
         script: |
           core.setFailed('Either of the pull-request-number or the s3-directory are required')
