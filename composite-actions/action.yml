@@ -25,7 +25,7 @@ runs:
   using: composite
   steps:
     - name: Input validation
-      if: inputs.s3-action == 'pr-previews' and inputs.push-branches == ''
+      if: inputs.s3-action == 'pr-previews' && inputs.push-branches == ''
       uses: actions/github-script@v6
       with:
         script: |
