@@ -5,11 +5,11 @@ inputs:
   push-branches:
     description: some desc
     required: false
-    default: "main,master"
+    # default: "0"
   s3-action:
     description: yess
     required: false
-    default: ""
+    default: "pr-previews"
   invalidate-cloudfront-cache:
     description: A flag to indicate if the cloudfront cache should be invalidated
     required: false
@@ -24,6 +24,12 @@ outputs:
 runs:
   using: composite
   steps:
+    - name: Input validation
+      if: inputs.s3-action == "pr-previews" and inputs.push-branches == ""
+      uses: actions/github-script@v6.3.3
+      with:
+        script: |
+          core.setFailed('Either of the pull-request-number or the s3-directory are required')
 
     - name: echo if statements
       shell: bash

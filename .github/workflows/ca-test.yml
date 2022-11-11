@@ -21,12 +21,18 @@ jobs:
 
     # - name: Checkout
     #   uses: actions/checkout@v3
-    
-    - name: print inputs
-      if: github.event_name == 'pull_request' && contains(fromJson('["opened", "synchronize"]'), 'sync')
-      # if: github.event_name == 'pull_request' && contains('["opened", "synchronize"]', 'sync')
-      shell: bash
-      run: echo one
+
+    - name: Run composite action
+      uses: ./composite-actions
+      # with:
+      #   push-branches: ""
+      #   s3-action: ""
+
+    # - name: print inputs
+    #   if: github.event_name == 'pull_request' && contains(fromJson('["opened", "synchronize"]'), 'sync')
+    #   # if: github.event_name == 'pull_request' && contains('["opened", "synchronize"]', 'sync')
+    #   shell: bash
+    #   run: echo one
       
 
     # - name: Run composite action
