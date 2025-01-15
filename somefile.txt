@@ -3,5 +3,3 @@ more text
 abcd
 develop
 test
-gg
-ca
